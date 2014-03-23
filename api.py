@@ -52,7 +52,6 @@ class TwitterDevKit(object):
         url = 'https://twitter.com/'
         r = self.session.get(url)
         bf = BeautifulSoup(r.content)
-        self.write_result(r)
         form = bf.find('form',{'id':'signout-form'})
         if not form:
             return False
@@ -92,4 +91,3 @@ class TwitterDevKit(object):
         data['iframe_callback'] = 'window.top.swift_tweetbox_1395441791174'
 
         r = self.session.post(url,data=data,headers=headers)
-        self.write_result(r)
