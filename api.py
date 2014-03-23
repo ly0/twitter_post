@@ -39,7 +39,16 @@ class TwitterDevKit(object):
             print "Can't login!"
             return None
 
-
+    def _get_dev_header(self):
+        headers = {'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+                   'Accept-Encoding':'gzip, deflate',
+                   'Accept-Language':'en-US,en;q=0.5',
+                   'Connection':'keep-alive',
+                   'Host':'twitter.com',
+                   'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:27.0) Gecko/20100101 Firefox/27.0'
+                   }
+        return headers
+        
     def _get_dev_login_data(self,login_page):
         r = self.session.get(login_page,headers=self._get_dev_header())
         bf = BeautifulSoup(r.content)
